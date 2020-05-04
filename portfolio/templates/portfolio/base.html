@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'portfolio/base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% block link %}{% endblock %}
+    {% block title %}{% endblock %}
+</head>
+<body>
+    <div class="nav-bar">
+        <span class="navbar-toggle" id="js-navbar-toggle">
+            <i class="fa fa-bars"></i>
+        </span>
+        <div class="nav-content">
+            <div class="nav-left">
+                <a href="{% url 'home' %}">SIEW'S PORTFOLIO</a>
+            </div>
+            <div class="nav-right" id="js-menu">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'home' %}#project">My Project</a>
+                <a href="{% url 'home' %}#about">About Me</a>
+            </div>
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+    <script src="{% static 'portfolio/base.js' %}"></script>
+</body>
+</html>

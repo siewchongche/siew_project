@@ -1,0 +1,94 @@
+ @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700");
+
+html,body {
+  font-family: "Poppins", sans-serif;
+  color: #222;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.intro-section {
+    display: flex;
+    justify-content: center;
+    background-image: url('images/hero-pic.png');
+    background-size: cover;
+    width: 100%;
+    padding-bottom: 2rem;
+}
+
+.intro-two-cols {
+    display: flex;
+    flex-direction: row;
+    margin-top: 6rem;
+    align-items: center;
+}
+
+.intro-two-cols > div {
+    margin: 1rem;
+}
+
+.intro-title-desc {
+    color: blanchedalmond;
+}
+
+.profile-photo > img {
+    border-radius: 100%;
+    width: 10rem;
+    height: 13rem;
+}
+
+.project-section {
+    text-align: center;
+    background-color: turquoise;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.project-cols {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.project-col {
+    border: 2px solid #303030;
+    border-radius: 10px;
+    width: 20rem;
+    min-height: 20rem;
+    background-color: whitesmoke;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.project-col > ul {
+    text-align: left;
+}
+
+.aboutme-section {
+    text-align: center;
+    background-color: beige;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.two-col {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+}
+
+.two-col-left, .two-col-right {
+    border: 1px solid #303030;
+    border-radius: 10px;
+    width: 100%;
+    height: 20rem;
+    margin: 2rem;
+}

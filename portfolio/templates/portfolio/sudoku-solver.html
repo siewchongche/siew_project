@@ -1,0 +1,135 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block link %} <link rel="stylesheet" href="{% static 'portfolio/sudoku-solver.css' %}"> {% endblock %}
+{% block title %} <title>Sudoku Solver</title> {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="title">
+        <h1>Sudoku Solver</h1>
+    </div>
+    <div class="description">
+        <p>This is a simple sudoku solver that can solve most of sudoku problem (except "Expert/Very Hard" level).</p>
+        <p>Insert number in the corresponding square block, and click "SOLVE" button.</p>
+        <p>The process is to send the unsolved sudoku to backend script, and reply the solved sudoku to frontend through Django.</p>
+        <p>Completed code can be found in Github through 
+            <a href="#", target="_blank">here</a> for Python as backend and 
+            <a href="#", target="_blank">here</a> for javascript as frontend.</p>
+    </div>
+    <form action="{% url 'sudoku' %}" method="POST" id="mainboard" autocomplete="off">
+        <div class="sudoku-main">
+            {% csrf_token %}    
+            <div class="block">
+                <div class="square"><input type="text" class="square-num" id="r1" maxlength="1" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r1" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r1" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r2" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r2" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r2" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r3" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r3" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r3" maxlength="1" /></div>
+            </div>
+            <div class="block">
+                <div class="square"><input type="text" class="square-num" id="r1" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r1" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r1" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r2" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r2" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r2" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r3" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r3" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r3" maxlength="1" /></div>
+            </div>
+            <div class="block">
+                <div class="square"><input type="text" class="square-num" id="r1" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r1" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r1" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r2" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r2" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r2" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r3" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r3" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r3" maxlength="1" /></div>
+            </div>
+            <div class="block">
+                <div class="square"><input type="text" class="square-num" id="r4" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r4" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r4" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r5" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r5" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r5" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r6" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r6" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r6" maxlength="1" /></div>
+            </div>
+            <div class="block">
+                <div class="square"><input type="text" class="square-num" id="r4" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r4" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r4" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r5" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r5" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r5" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r6" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r6" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r6" maxlength="1" /></div>
+            </div>
+            <div class="block">
+                <div class="square"><input type="text" class="square-num" id="r4" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r4" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r4" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r5" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r5" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r5" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r6" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r6" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r6" maxlength="1" /></div>
+            </div>
+            <div class="block">
+                <div class="square"><input type="text" class="square-num" id="r7" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r7" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r7" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r8" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r8" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r8" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r9" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r9" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r9" maxlength="1" /></div>
+            </div>
+            <div class="block">
+                <div class="square"><input type="text" class="square-num" id="r7" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r7" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r7" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r8" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r8" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r8" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r9" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r9" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r9" maxlength="1" /></div>
+            </div>
+            <div class="block">
+                <div class="square"><input type="text" class="square-num" id="r7" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r7" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r7" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r8" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r8" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r8" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r9" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r9" maxlength="1" /></div>
+                <div class="square"><input type="text" class="square-num" id="r9" maxlength="1" /></div>
+            </div>
+        </div>
+        <div class="error">{{error_msg}}</div>
+        <div class="button-group">
+            <input type="button" value="RESET" class="btn-reset"  onclick="resetForm()">
+            <input type="button" value="SOLVE" class="btn-solve"  onclick="submitForm()">
+        </div>
+    </form>
+</div>
+
+<div id="raw_data_list">{{raw_data_list}}</div>
+
+<script src="{% static 'portfolio/sudoku-solver.js' %}"></script>
+
+{% endblock %}

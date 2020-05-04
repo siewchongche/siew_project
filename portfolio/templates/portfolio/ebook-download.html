@@ -1,0 +1,159 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block link %}<link rel="stylesheet" href="{% static 'portfolio/ebook-download.css' %}">{% endblock %}
+{% block title %}<title>Download Ebook with Python Web Scraping</title>{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="paper padding-bottom">
+        <div class="title">
+            <h1>Download Ebook with Python Web Scraping</h1>
+        </div>
+        <div class="text">
+            <p>
+                My university informed me that there is a free access to Springer Nature ebook. The ebook is in PDF format and downloadable.
+                There are about 400+ free contents in various categories include the computer science that I interest in.
+                These free contents is valid till end of July only, so I decide to download them all for future reference.
+            </p>
+            <h2>Prerequisite</h2>
+            <p>
+                I got the ebook list from university in PDF format, so I used online free tool to convert it into Excel format.
+                (But later I found out the list is also provided by their website)
+            </p>
+        </div>
+        <img src="{% static 'portfolio/images/ebook-download/ebook-list-in-excel.png' %}" alt="Ebook list in Excel" class="image" />
+        <div class="text">
+            <p>
+                I sorted the ebook into their respective category folder, but I didn't spent time to study and wrote code to automatically 
+                create new folder for each new category, so I created it manually.
+            </p>
+        </div>
+        <img src="{% static 'portfolio/images/ebook-download/categories-folder.png' %}" alt="Categories folder" class="image" />
+        <div class="text">
+            <h2>Writing Code</h2>
+            <p>
+                First, I import those necessary libraries.
+            </p>
+        </div>
+        <div class="code-block">
+            <code>
+                import requests<br />
+                from bs4 import BeautifulSoup<br />
+                import pandas as pd<br />
+                import time
+            </code>
+        </div>
+        <div class="text">
+            <p>
+                In this script, Python library Requests is for getting   the page and download the PDF file.
+                BeautifulSoup is for scraping the download link. Pandas is for reading the Excel file.
+                And Time is for interval between each download.
+            </p>
+            <p class="padding-top">
+                Then, read the Excel file with Pandas and convert into dataframe.
+            </p>
+        </div>
+        <div class="code-block">
+            <code>
+                # Read the excel file with pandas<br />
+                data = pd.read_excel('index.xlsx')
+            </code>
+        </div>
+        <div class="text">
+            <p class="padding-top">
+                Next, loop through dataframe with iterrows function, and set variable for later use.
+            </p>
+        </div>
+        <div class="code-block">
+            <code>
+                # Loop through pandas dataframe<br />
+                for index, row in data.iterrows():<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;no = row['No.']<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;title = row['Book Title'].replace('\n', ' ')<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;category = row['Subject/Category'].replace('\n', ' ')<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;url = row['OpenURL']
+            </code>
+        </div>
+        <div class="text">
+            <p>
+                Some text in Excel cells had been divided into 2 rows due to the conversion of PDF to Excel.
+                So string.replace('\n', ' &nbsp;') is used to combine them.
+                All the code below is in the for loop.
+            </p>
+            <p class="padding-top">
+                Then, get the page through the url with requests, and scrap through the page with BeautifulSoup.
+            </p>
+        </div>
+        <div class="code-block">
+            <code>
+                &nbsp;&nbsp;&nbsp;&nbsp;# Get the page from url wih requests<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;response = requests.get(url)<br /><br />
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;# Read the page with beautifulsoup<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;soup = BeautifulSoup(response.content, 'html.parser')
+            </code>
+        </div>
+        <div class="text">
+            <p class="padding-top">
+                There is a download button in the page for download the PDF file with download link.
+                The button is an a tag with attribute of title set to "Download this book in PDF format".
+                So I used it as the search point.
+                Then, "href" attribute is extracted from the result as the download link.
+            </p>
+        </div>
+        <div class="code-block">
+            <code>
+                &nbsp;&nbsp;&nbsp;&nbsp;# Search for download link with beautifulsoup<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;result = soup.find('a', attrs={'title' : 'Download this book in PDF format'})<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;download_link = result['href']
+            </code>
+        </div>
+        <div class="text">
+            <p class="padding-top">
+                At last, download the ebook through the download link with Requests.
+                The link only have back part of full https url, so front part is added manually (with same front part for all).
+                Write the downloaded binary into PDF with "wb", which stand for "write binary".
+                Print the download status to terminal for tracing the progress.
+            </p>
+        </div>
+        <div class="code-block">
+            <code>
+                &nbsp;&nbsp;&nbsp;&nbsp;# Download the pdf file with requests<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;pdf = requests.get('https://link.springer.com' + download_link)<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;with open (f'ebook/{category}/{title}.pdf', 'wb') as writer:<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f'Saving ebook no.{no} - title "{title}" in category "{category}"...')<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.write(pdf.content)
+            </code>
+        </div>
+        <div class="text">
+            <p class="padding-top">
+                Time library is used in the end of code whenever a download is complete,
+                to prevent my IP been blocked cause by access their server simultaneously.
+                Argument in the function is integer measure in second.
+            </p>
+        </div>
+        <div class="code-block">
+            <code>
+                &nbsp;&nbsp;&nbsp;&nbsp;# To prevent IP been blocked cause by access their server simultaneously<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;time.sleep(60)
+            </code>
+        </div>
+        <div class="text">
+            <p class="padding-top">
+                Completed code can be found in Github through 
+                <a href="https://github.com/siewchongche/springer-ebook-download/blob/master/web_local_scraping/springer_ebook/download.py", target="_blank">here</a>.
+            </p>
+        </div>
+        <div class="text">
+            <p class="padding-top">
+                That's all for the codes. It actually take time to complete the download job, because each time the program will pending for a minute before continue to download next ebook.
+                Anyway, the program had been automated to do its job, I just need to trace the progress.
+                Below is an images for the progress of the program on terminal.
+            </p>
+        </div>
+        <img src="{% static 'portfolio/images/ebook-download/download-progress.png' %}" alt="download progress" class="image" />
+    </div>
+</div>
+
+{% endblock %}

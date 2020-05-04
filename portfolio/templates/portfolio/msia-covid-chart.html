@@ -1,0 +1,182 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block link %}<link rel="stylesheet" href="{% static 'portfolio/msia-covid-chart.css' %}">{% endblock %}
+{% block title %}<title>Malaysia Covid-19 Charts</title>{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="main-title">
+            <h1>Malaysia Latest Covid19 Data in Charts</h1>
+        </div>
+        <div class="main-desc">
+            <h3>These charts are generated using Python Matplotlib and Pandas built-in charts libraries. These charts are retrieving data from CSV file daily after 8:30pm. The CSV file is updating daily by Python web scraping script. Latest data is retrieve at {{date}}.</h3>
+        </div>
+        
+        <!-- Line plot - Accumulate Cases, Recoveries and Deaths -->
+        <div class="chart-title">
+            <h2>Line Plot - Accumulate Cases, Deaths and Recoveries</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Malaysia latest accumulate cases, deaths and recoveries in line plot</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/all-cdr.png' %}" alt="line plot for cases, recoveries and deaths">
+        </div>
+
+        <!-- Line plot - Accumulate Cases Only -->
+        <div class="chart-title">
+            <h2>Line plot - Accumulate Cases Only</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Malaysia latest accumulate cases in line plot</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/all-cases.png' %}" alt="line plot for cases only">
+        </div>
+
+        <!-- Line plot - Accumulate Deaths Only -->
+        <div class="chart-title">
+            <h2>Line Plot - Accumulate Deaths Only</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Malaysia latest accumulate deaths in line plot</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/all-deaths.png' %}" alt="line plot for deaths only">
+        </div>
+
+        <!-- Line plot - Accumulate Recoveries Only -->
+        <div class="chart-title">
+            <h2>Line Plot - Accumulate Recoveries Only</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Malaysia latest accumulate recoveries in line plot</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/all-recoveries.png' %}" alt="line plot for recoveries only">
+        </div>
+
+        <!-- Stack Plot - Accumulate Cases, Recoveries and Deaths -->
+        <div class="chart-title">
+            <h2>Stack Plot - Accumulate Cases, Deaths and Recoveries</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Another way to show Malaysia latest accumulate cases, deaths and recoveries in stack plot</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/all-cdr-stack.png' %}" alt="line plot for cases, recoveries and deaths">
+        </div>
+
+        <!-- Line plot - Active Cases -->
+        <div class="chart-title">
+            <h2>Line Plot - Active Cases</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Malaysia active cases trend in line plot</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/active-cases.png' %}" alt="line plot for active cases">
+        </div>
+
+        <!-- Stacked Bar Chart - Daily Active Cases, Recoveries and Deaths -->
+        <div class="chart-title">
+            <h2>Stacked Bar Chart - Daily Active Cases, Recoveries and Deaths</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Malaysia daily active cases, recoveries and deaths in stacked bar chart</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/stacked-bar-chart-cdr.png' %}" alt="stacked bar chart for active cases, recoveries and deaths">
+        </div>
+
+        <!-- Bar Chart - Daily Cases -->
+        <div class="chart-title">
+            <h2>Bar Chart - Daily Cases</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Malaysia daily cases in bar chart</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/new-cases.png' %}" alt="bar chart for cases">
+        </div>
+
+        <!-- Bar Chart - Daily Deaths -->
+        <div class="chart-title">
+            <h2>Bar Chart - Daily Deaths</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Malaysia daily deaths in bar chart</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/new-deaths.png' %}" alt="bar chart for deaths">
+        </div>
+
+        <!-- Bar Chart - Daily Recoveries -->
+        <div class="chart-title">
+            <h2>Bar Chart - Daily Recoveries</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Malaysia daily recoveries in bar chart</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/new-recoveries.png' %}" alt="bar chart for recoveries">
+        </div>
+
+        <!-- Group Bar Chart - Cases, Recoveries and Deaths in January -->
+        <div class="chart-title">
+            <h2>Grouped Bar Chart - Cases, Recoveries and Deaths in January</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Daily comparison between cases, recoveries and deaths in grouped bar chart for month January</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/groupbarchart-jan.png' %}" alt="group bar chart for january">
+        </div>
+
+        <!-- Group Bar Chart - Cases, Recoveries and Deaths in February -->
+        <div class="chart-title">
+            <h2>Grouped Bar Chart - Cases, Recoveries and Deaths in February</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Daily comparison between cases, recoveries and deaths in grouped bar chart for month February</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/groupbarchart-feb.png' %}" alt="group bar chart for february">
+        </div>
+
+        <!-- Group Bar Chart - Cases, Recoveries and Deaths in March -->
+        <div class="chart-title">
+            <h2>Grouped Bar Chart - Cases, Recoveries and Deaths in March</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Daily comparison between cases, recoveries and deaths in grouped bar chart for month March</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/groupbarchart-mar.png' %}" alt="group bar chart for march">
+        </div>
+
+        <!-- Group Bar Chart - Cases, Recoveries and Deaths in April -->
+        <div class="chart-title">
+            <h2>Grouped Bar Chart - Cases, Recoveries and Deaths in April</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Daily comparison between cases, recoveries and deaths in grouped bar chart for month April</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/groupbarchart-apr.png' %}" alt="group bar chart for april">
+        </div>
+
+        <!-- Pie Chart - Latest Percentages of Cases, Deaths and Recoveries -->
+        <div class="chart-title">
+            <h2>Pie Chart - Latest Percentages of Cases, Deaths and Recoveries</h2>
+        </div>
+        <div class="chart-desc">
+            <p>Malaysia latest division of active cases, deaths and recoveries in pie chart</p>
+        </div>
+        <div class="chart">
+            <img src="{% static 'portfolio/images/charts/cdr-perc.png' %}" alt="bar chart for recoveries">
+        </div>
+
+    </div>
+{% endblock %}

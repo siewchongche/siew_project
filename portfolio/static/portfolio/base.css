@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700");
+
+html,body {
+    font-family: "Poppins", sans-serif;
+    color: #222;
+    margin: 0;
+    padding-top: 2.5rem;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #282C34;
+  height: 4rem;
+  width: 100%;
+}
+  
+.navbar-toggle {
+  display: none;
+}
+
+.nav-left > a {
+  font-size: 2rem;
+  font-family: "Lucida Console", Monaco, monospace;
+  text-decoration: none;
+  color: blanchedalmond;
+  padding: 1rem 0 1rem 2rem;
+}
+
+.nav-right > a {
+  color: blanchedalmond;
+  text-align: center;
+  margin-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-left > a:hover, .nav-right > a:hover {
+  color: whitesmoke;
+}
+
+@media (max-width: 576px) {
+  .nav-content {
+    flex-direction: column;
+    height: auto;
+    padding-top: 1rem;
+  }
+
+  .navbar-toggle {
+    display: inline;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: blanchedalmond;
+    font-size: 24px;
+  }
+
+  .nav-left {
+    text-align: left;
+    transform: translateX(-30px);
+    padding-bottom: 1rem;
+  }
+
+  .nav-left > a {
+    padding: 1rem 0 0 0;
+  }
+
+  .nav-right {
+    display: none;
+  }
+
+  .active {
+    display: flex;
+    flex-direction: column;
+  }
+
+}

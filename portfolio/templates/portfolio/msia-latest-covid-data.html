@@ -1,0 +1,36 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}<title>Malaysia Covid19 Latest Data</title>{% endblock %}
+
+{% block content %}
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .info {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .info > p {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="info">
+            <h1>Latest Malaysia Covid19 Information</h1>
+            <p>Date: {{date}} </p>
+            <p>Cases: {{confirmed_cases}} (+{{new_cases}})</p>
+            <p>Deaths: {{confirmed_deaths}} (+{{new_deaths}})</p>
+            <p>Recoveries: {{recoveries}} (+{{new_recoveries}})</p>
+        </div>
+    </div>
+    <div class="container">
+        <p>Download data.csv file <a href="{{MEDIA_URL}}data.csv" target="_blank">here</a></p>
+    </div>
+{% endblock %}
+

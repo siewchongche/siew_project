@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 3rem 0 3rem;
+}
+
+.chart > img {
+    max-width: 80%;
+}
+
+@media (max-width: 576px) {
+    /* .container {
+        padding: 1rem 0 0 0;
+    } */
+
+    .chart > img {
+        max-width: 100vw;
+        position: relative;
+        margin-left: -50vw;
+        left: 32.5%;
+    }
+}

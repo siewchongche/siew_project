@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3rem;
+}
+
+.paper {
+    width: 60%;
+    border-left: 2px solid dimgrey;
+    border-right: 2px solid dimgrey;
+    box-shadow: 5px 10px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    text-align: center;
+}
+
+.text > p {
+    text-align: left;
+}
+
+.padding-top {
+    padding-top: 2rem;
+}
+
+.padding-bottom {
+    padding-bottom: 2rem;
+}
+
+.image {
+    max-width: 70%;
+    height: auto;
+}
+
+.code-block {
+    border: 2px solid dimgrey;
+    padding: 2rem;
+    background-color: lightgrey;
+    text-align: left;
+}
