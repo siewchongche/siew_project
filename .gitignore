@@ -1,2 +1,4 @@
 env/
 siew_project/
+__pycache__/
+*.pyc
