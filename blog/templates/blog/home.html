@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="post-form">
+        <form method="POST">
+            {% csrf_token %}
+            <legend>My new thought...</legend>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <p>{{form.title}}</p>
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <p>{{form.content}}</p>
+            </div>
+            <div class="text-right">
+                <input type="submit" class="btn btn-primary" value="Post">
+            </div>
+        </form>
+    </div>
+    <div class="post-container">
+        <legend>My previous thought...</legend>
+        {% for post in posts %}
+            <div class="card mb-3">
+                <div class="card-header">
+                    {{post.date_posted}}
+                    <a href="{% url 'edit' pk=post.id %}"><span class="badge badge-pill badge-secondary">Edit</span></a>
+                    <a href="{% url 'delete' pk=post.id %}"><span class="badge badge-pill badge-secondary">Delete</span></a>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{post.title}}</h4>
+                    <p class="card-text">{{post.content}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

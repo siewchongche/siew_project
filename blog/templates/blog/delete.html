@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="post-form">
+        <form method="POST">
+            {% csrf_token %}
+            <legend>Are you sure you want to delete this post?</legend>
+            <div class="card mb-3">
+                <div class="card-header">
+                    {{post.date_posted}}
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <h4 class="card-title">{{post.title}}</h4>
+                    </div>
+                    <div class="form-group">
+                        <p class="card-text">{{post.content}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <button class="btn btn-primary" name="delete">DELETE</button>
+                <button class="btn btn-secondary" name="cancel">cancel</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'blog/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/main.css' %}">
+    <title>Just Me & My Thought</title>
+</head>
+<body>
+    <div class="text-center bg-primary pt-3 pb-3">
+        <a href="{% url 'home' %}">
+            <h2 class="text-white">Just Me & My Thought</h2>
+        </a>
+    </div>
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>
