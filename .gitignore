@@ -1,5 +1,7 @@
 env/
-siew_project/
+siew_project/settings.py
 __pycache__/
 *.pyc
 .vscode/
+media/
+db.sqlite3

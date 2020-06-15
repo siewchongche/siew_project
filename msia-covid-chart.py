@@ -224,9 +224,9 @@ def main():
 # Run script every day at 8.30pm UTC+8
 schedule.every().day.at("12:20").do(main)
 
-while True:
-    schedule.run_pending()
-    time.sleep(60)
+#while True:
+#    schedule.run_pending()
+#    time.sleep(60)
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,11 @@
+.post-form {
+    padding: 1rem;
+}
+
+.form-group > p > input, textarea {
+    width: 100%;
+}
+
+.post-container {
+    padding: 1rem;
+}
